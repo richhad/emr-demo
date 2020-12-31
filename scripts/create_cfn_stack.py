@@ -57,7 +57,10 @@ def create_bucket(bucket_name):
     """
 
     try:
-        s3_client.create_bucket(Bucket=bucket_name)
+        #s3_client.create_bucket(Bucket=bucket_name)
+        s3_client.create_bucket(Bucket=bucket_name,CreateBucketConfiguration={
+    'LocationConstraint': 'eu-west-1'})
+
         logging.info(f'New bucket name: {bucket_name}')
     except ClientError as e:
         logging.error(e)
